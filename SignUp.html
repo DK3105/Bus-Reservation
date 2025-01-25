@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SignUp.css">
+    <title>Sign Up Form - MAD Bus</title>
+</head>
+<body>
+    <div class="container">
+        <h1>MAD Bus</h1>
+        <h2>Sign Up</h2>
+        <form id="signUpForm" action="#" method="POST">
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <label>Gender:</label>
+            <div>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+            </div>
+            <div>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+            </div>
+            <div>
+                <input type="radio" id="other" name="gender" value="other" required>
+                <label for="other">Other</label>
+            </div>
+
+            <label for="dateofbirth">Date of Birth:</label>
+            <input type="date" id="dateofbirth" name="dateofbirth" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" placeholder="Enter your address" required></textarea>
+
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" name="pincode" placeholder="Enter your pincode" required pattern="\d{6}" title="Please enter a valid 6-digit pincode.">
+
+            <label for="phonenumber">Phone Number:</label>
+            <div class="phone-container">
+                <select id="countrycode" name="countrycode" required>
+                    <option value="+91">+91 (India)</option>
+                    <option value="+1">+1 (USA)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+61">+61 (Australia)</option>
+                    <option value="+81">+81 (Japan)</option>
+                    <!-- Add more country codes as needed -->
+                </select>
+                <input type="tel" id="phonenumber" name="phonenumber" placeholder="Enter your phone number" required pattern="^\d{10}$" title="Please enter a valid 10-digit phone number.">
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Modal for success message -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Successfully Created an Account!</h2>
+            <p>Welcome to MAD Bus! You can now log in.</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle the modal display
+        const form = document.getElementById('signUpForm');
+        const successModal = document.getElementById('successModal');
+        const closeModal = document.querySelector('.close');
+
+        // When the form is submitted, prevent the default action and show the modal
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            successModal.style.display = 'block'; // Show the success modal
+        });
+
+        // When the user clicks on the close button, hide the modal
+        closeModal.addEventListener('click', function() {
+            successModal.style.display = 'none';
+        });
+
+        // When the user clicks anywhere outside the modal, hide the modal
+        window.addEventListener('click', function(event) {
+            if (event.target === successModal) {
+                successModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
